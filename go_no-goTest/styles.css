@@ -1,0 +1,50 @@
+#pointsBarHolder {
+  position: absolute;
+  margin: 0;
+  top: 5vh;
+  left: 5vw;
+  height: 90vh;
+  width: 3vw;
+}
+
+#pointsBar {
+  display: none;
+  position: relative;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#scoreArea {
+  position: absolute;
+  font-size: 4vmin;
+  top: 0;
+  left: 0;
+  margin-left: 2vw;
+  display: none;
+}
+
+#textArea {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#buttonArea {
+  position: absolute;
+  margin: 0;
+  width: 99vw;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+#dialogArea {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

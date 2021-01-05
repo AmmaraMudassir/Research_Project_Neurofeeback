@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* //////////////////////////////// */
+
+.progress-container {
+  height: 600px;
+  width: 60px;
+  margin: auto;
+  border: solid 3px green;
+  border-radius: 10px;
+  position: relative;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  transform: rotate(180deg);
+}
+
+.progress-bar {
+  height: auto;
+  width: 30px;
+  border-radius: 5px;
+  background-color: green;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  transition: all 500ms;
+}

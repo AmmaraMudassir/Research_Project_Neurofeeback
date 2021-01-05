@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro Feedback | Stroop Test</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Styles -->
+    <style>
+      body {
+        /* border: solid 1px blue; */
+        height: 100vh;
+        background-color: #bdf0f7;
+      }
+    </style>
+
+    <div class="h-100 d-flex flex-column align-items-center justify-content-center">
+      <!-- INITIAL SCREEN -->
+      <h1 id="han-title" class="text-center display-3 mb-3">Stroop Test</h1>
+      <div id="han-intro" class="w-50">
+        <p id="han-text" class="text-center">
+          This is a test of reaction. Reaction time is an important skill in many of our day to day
+          activities. Would you like improve your reaction time
+        </p>
+      </div>
+
+      <!-- INSTRUCTIONS -->
+      <div id="instructions">
+        <h2 class="mb-2">Instructions</h2>
+        <ul class="pl-2 mb-4 font-weight-bold">
+          <li>Answer the colour not the word</li>
+          <li>Contains 5 demo questions and 25 actual questions</li>
+          <li>Demo questions are not for evaluation</li>
+          <li>Each right answer carries +1 and no negative</li>
+          <li>Time taken for each question are also calculated</li>
+          <li>You can check the output in graph and also on excel sheet</li>
+        </ul>
+      </div>
+      <button id="start-stroop" class="btn btn-warning mt-2" onclick="Demo()">
+        Start Test
+      </button>
+
+      <!-- TIMER BEFORE TEST STARTS -->
+      <div id="startstop" class="mb-5">
+        <div id="timetext" class="text-center mb-4"></div>
+        <div class="display-4 align-self-center mb-5">0:<span id="time">5</span></div>
+      </div>
+
+      <!-- TEST OPTIONS -->
+      <div id="content" class="display-4 mb-5 font-weight-bolder text-center"></div>
+      <div id="options" class="font-weight-bold mb-5">
+        <p id="A" onclick="Record(this.id)"></p>
+        <p id="B" onclick="Record(this.id)"></p>
+        <p id="C" onclick="Record(this.id)"></p>
+        <p id="D" onclick="Record(this.id)"></p>
+      </div>
+
+      <!-- CHART & LAST SCREEN -->
+      <div id="chartcontainer">
+        This is just a replacement in case Javascript is not available or used for SEO purposes
+      </div>
+      <div id="endButton" class="flex-column align-items-center mt-2">
+        <div id="result" class="display-4">
+          Score:<span id="score" class="mr-5"></span>Total Time:
+          <span id="totaltime"></span>
+        </div>
+        <button id="endbtn" class="btn btn-warning mt-5" onclick="send_data();window.history.back()">
+          End Test
+        </button>
+      </div>
+    </div>
+
+    <script src="../assets/jscharts/jscharts.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+	
+	</body>
+</html>

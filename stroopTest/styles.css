@@ -1,0 +1,31 @@
+#startstop,
+#han-intro {
+  display: flex;
+  flex-direction: column;
+}
+
+#chartcontainer,
+#startstop,
+#endButton,
+#content {
+  display: none;
+}
+
+#A,
+#B,
+#C,
+#D {
+  display: none;
+  cursor: pointer;
+  padding: 5px 20px;
+  text-align: center;
+  border: solid 1px #666;
+  border-radius: 5px;
+}
+
+#A:hover,
+#B:hover,
+#C:hover,
+#D:hover {
+  background: #9bccd3;
+}

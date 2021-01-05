@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro FeedBack</title>
+    <style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.progress-container {
+  height: 600px;
+  width: 60px;
+  margin: auto;
+  border: solid 3px green;
+  border-radius: 10px;
+  position: relative;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  transform: rotate(180deg);
+}
+
+.progress-bar {
+  height: auto;
+  width: 30px;
+  border-radius: 5px;
+  background-color: green;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  transition: all 500ms;
+}
+
+    </style>
+    
+    
+  </head>
+  <body >
+   <div id="headdiv">
+       <div id="mycontainer" style="width: auto;float: left;margin-left: 2%;">
+    <input
+      class="threshold"
+      placeholder="threshold value"
+      type="text"
+      style="width: 120px; margin-top: 30px;margin-left: 0%; padding: 10px;" 
+      />
+
+    <input
+      class="live"
+      placeholder="live value"
+      type="text"
+      style="width: 120px; margin-bottom: 20px;padding: 10px;"
+     />
+
+    <div  class="progress-container">
+      <div  class="progress-bar"></div>
+    </div>
+</div>
+</div>
+  </body>
+  <script>
+    // var progressBar = window.document.getElementById("progress-bar");
+    // var progressContainer = window.document.getElementById( "progress-container");
+    
+    const threshold = window.document.getElementsByClassName("threshold");
+    var progressBar = window.document.getElementsByClassName("progress-bar");
+    var progressContainer = window.document.getElementsByClassName( "progress-container");
+    var live=window.document.getElementsByClassName("live");
+    let thresholdValue, value;
+
+    document.addEventListener("change", e => {
+  if (e.target.className.indexOf('threshold') > -1) {
+    setProgressBarValues(e.target, 'threshold');
+  } else if (e.target.className.indexOf('live') > -1) {
+    setProgressBarValues(e.target, 'live');
+    
+  }
+});
+var count2=sessionStorage.getItem('ch');
+for (var i = 0; i < (count2*2)-1; i++) {
+  var headdiv = document.getElementById('headdiv');
+  var elem = document.querySelector('#mycontainer');
+  var clone = elem.cloneNode(true);
+  clone.id = 'mycontainer' + i;
+  headdiv.appendChild(clone);
+}
+function setProgressBarValues(changedElement, changedElemName) {
+	var parent = changedElement.parentElement;
+  var thresholdValue, liveValue;
+  
+  if (changedElemName === 'threshold') {
+      thresholdValue = changedElement.value;
+      liveValue = parent.querySelector('.live').value;
+  } else if (changedElemName === 'live') {
+     thresholdValue = parent.querySelector('.threshold').value;
+     liveValue = changedElement.value;
+  }
+  
+  if (thresholdValue && liveValue) {
+      const progressBar = parent.querySelector(".progress-bar");
+      const progressContainer = parent.querySelector(".progress-container");
+      
+      let percentValue = Math.floor((liveValue / (2 * thresholdValue)) * 100);
+      let percentMargin = Math.floor((25 * liveValue) / 100);
+      console.log(percentValue, percentMargin);
+      if (liveValue < 100) {
+         progressBar.style.height = `calc(${liveValue}% - ${percentMargin}px)`;
+      } else if (liveValue => 100) {
+         progressBar.style.height = `calc(100% - 25px)`;
+      } else {
+        progressBar.style.height = `0px`;
+      }
+      if (percentValue < 50) {
+        progressBar.style.backgroundColor = "red";
+        progressContainer.style.borderColor = "red";
+      } else {
+        progressBar.style.backgroundColor = "green";
+        progressContainer.style.borderColor = "green";
+      }
+  }
+}
+  </script>
+
+</html>
+

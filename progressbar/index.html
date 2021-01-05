@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two ProgressBar</title>
+    <style>
+
+* {
+    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.progress-container {
+   
+  height: 600px;
+  width: 60px;
+  margin: auto;
+  border: solid 3px green;
+  border-radius: 10px;
+  position: relative;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  transform: rotate(180deg);
+}
+
+.progress-bar {
+    
+  height: auto;
+  width: 30px;
+  border-radius: 5px;
+  background-color: green;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  transition: all 500ms;
+}
+#play,
+#stop,
+#next {
+  width: 115px;
+  height: 30px;
+  /* border-radius: 200px; */
+  background-color: #eed91a;
+  border: 1px solid #3f2424;
+  font-size: 15px;
+  margin-left: 5px;
+  margin-right: 15px;
+  /* transition-duration: 0.4s;
+  box-shadow: 0 5px #20739b; */
+}
+
+#vidbtns {
+  z-index: 11;
+}
+
+.hide {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+}
+    </style>
+    
+    
+  </head>
+  <body >
+    <div id="vidbtns">
+        <button class="btn btn-warning btn-lg px-5" id="play" onclick="startPy()" style="margin-left: 35%;">
+          Play
+        </button>
+        <!-- <button class="btn btn-warning btn-lg px-5" id="stop">
+          Stop
+        </button> -->
+        <!-- <button class="btn btn-warning btn-lg px-5" id="stop" onclick="window.location.href='../session/stop_session.php'" >Stop</button> -->
+        <button class="btn btn-warning btn-lg px-5" id="next" >Return</button><br /><br />
+
+      </div>
+   <div id="headdiv" style="margin-top: 2%;background-color: red;">
+       <div id="mycontainer" style="width: auto;margin-left: 2%;">
+    <div  class="progress-container" style="float: left;margin-left:38%;">
+      <div  class="progress-bar"></div>
+    </div>
+    <div  id="secpc" class="progress-container" style="float: left;margin-left:10%;">
+        <div  id="secpb" class="progress-bar"></div>
+      </div>
+    
+</div>
+</div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+
+  <script src="script2.js"> </script>
+
+  <script>
+    function startPy() {
+      $.ajax({
+        type: "POST",
+        url: '../session/run_session.php',
+      });
+      console.log("Run");
+    }
+    function stopPy() {
+      $.ajax({
+        type: "POST",
+        url: '../session/stop_session.php',
+      });
+      console.log("stop");
+    }
+    </script>
+</html>
+
